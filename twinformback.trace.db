@@ -1,0 +1,63 @@
+2024-07-13 21:55:08.502647+09:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.login.loginId = :loginId */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.login_id=? [42104-224]
+2024-07-13 21:55:08.502647+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.login.loginId = :loginId */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.login_id=? [42104-224]
+2024-07-13 21:55:08.583715+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.login.loginId = :loginId */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.login_id=? [42104-224]
+2024-07-13 21:55:08.721072+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.login.loginId = :loginId */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.login_id=? [42104-224]
+2024-07-13 21:55:08.814358+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.login.loginId = :loginId */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.login_id=? [42104-224]
+2024-07-13 21:55:45.155631+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.login.loginId = :loginId */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.login_id=? [42104-224]
+2024-07-13 21:55:45.559048+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.login.loginId = :loginId */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.login_id=? [42104-224]
+2024-07-13 21:55:45.676646+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.login.loginId = :loginId */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.login_id=? [42104-224]
+2024-07-13 21:55:45.848839+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.login.loginId = :loginId */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.login_id=? [42104-224]
+2024-07-13 21:55:45.921841+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.login.loginId = :loginId */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.login_id=? [42104-224]
+2024-07-13 21:56:02.097218+09:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.login.loginId = :loginId */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.login_id=? [42104-224]
+2024-07-13 21:56:07.234986+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.login.loginId = :loginId */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.login_id=? [42104-224]
+2024-07-13 21:56:07.572162+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.login.loginId = :loginId */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.login_id=? [42104-224]
+2024-07-13 21:56:11.681453+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.login.loginId = :loginId */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.login_id=? [42104-224]
+2024-07-13 21:56:11.944545+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.login.loginId = :loginId */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.login_id=? [42104-224]
+2024-07-13 21:56:19.809500+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.name = :name */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.name=? [42104-224]
+2024-07-13 21:57:49.179722+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.login.loginId = :loginId */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.login_id=? [42104-224]
+2024-07-13 21:57:49.363752+09:00 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.login.loginId = :loginId */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.login_id=? [42104-224]
+2024-07-13 21:57:49.545142+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.login.loginId = :loginId */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.login_id=? [42104-224]
+2024-07-13 21:57:49.723578+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.login.loginId = :loginId */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.login_id=? [42104-224]
+2024-07-13 21:58:03.444971+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MEMBER" not found (this database is empty); SQL statement:
+/* select m from Member m where m.name = :name */ select m1_0.member_id,m1_0.login_id,m1_0.login_pw,m1_0.name from member m1_0 where m1_0.name=? [42104-224]
