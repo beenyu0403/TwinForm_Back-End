@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import proj.been433.twinformback.member.Member;
+import proj.been433.twinformback.question.MultipleChoice;
 import proj.been433.twinformback.question.MultipleChoiceItem;
 import proj.been433.twinformback.question.Question;
 import proj.been433.twinformback.writeform.Form;
@@ -28,6 +29,18 @@ public class WriteQuestionRepository {
 
     public List<Question> findAll() {
         return em.createQuery("select q from Question q", Question.class)
+                .getResultList();
+    }
+
+    public List<Question> findQuestionsByForm(Form form) {
+        return em.createQuery("select q from Question q where q.form = :form", Question.class)
+                .setParameter("form", form)
+                .getResultList();
+    }
+
+    public List<String> findItemsByQuestion(Question question) {
+        return em.createQuery("select i.itemTitle from MultipleChoiceItem  i where i.question = :question", String.class)
+                .setParameter("question", question)
                 .getResultList();
     }
 

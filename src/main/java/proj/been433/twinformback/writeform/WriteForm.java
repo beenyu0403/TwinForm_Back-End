@@ -30,7 +30,7 @@ public class WriteForm {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToOne(mappedBy = "writeForm", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "writeForm", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "form_id")
     private Form form;
 

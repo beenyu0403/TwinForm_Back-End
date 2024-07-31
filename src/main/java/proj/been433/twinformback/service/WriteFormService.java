@@ -45,6 +45,11 @@ public class WriteFormService {
     public Form findOne(Long Id) {
         return writeFormRepository.findOne(Id);
     }
+
+    public Form findOneFormByWriteFormId(Long Id) {
+        WriteForm writeForm = writeFormRepository.findOneWriteForm(Id);
+        return writeFormRepository.findOneFormByWriteForm(writeForm);
+    }
     public Object findOneByForm(Form form) {
         return writeFormRepository.findOneByForm(form);
     }

@@ -1,6 +1,7 @@
 package proj.been433.twinformback.service;
 
 
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,7 +32,7 @@ public class WriteQuestionService {
         Question question1;
         if (questionType.equals("객관식")) {
 
-            question1 = MultipleChoice.createMultipleChoice(QuestionType.MULTIPLE_CHOICE, question, description, is_essential, image_name);
+            question1 = MultipleChoice.createMultipleChoice(question, description, is_essential, image_name);
             for (int i=0; i< choice_items.size(); i++) {
                 MultipleChoiceItem multipleChoiceItem = MultipleChoice.createMultipleChoiceItem((MultipleChoice) question1, choice_items.get(i));
                 writeQuestionRepository.saveQuestionItem(multipleChoiceItem);
@@ -52,4 +53,54 @@ public class WriteQuestionService {
     public Question findOne(Long questionId) {
         return writeQuestionRepository.findOne(questionId);
     }
+
+    public List<QuestionListResponse> findQuestionsByForm(Form form) {
+        List<Question> q = writeQuestionRepository.findQuestionsByForm(form);
+        List<QuestionListResponse> result = new ArrayList<>();
+        for (int i=0; i<q.size(); i++) {
+            if (supportsMultipleChoice(q.get(i))) {
+                QuestionListResponse qr = new QuestionListResponse(q.get(i), QuestionType.MULTIPLE_CHOICE.toString());
+                List<String> items = writeQuestionRepository.findItemsByQuestion(q.get(i));
+                for (int j=0; j<items.size(); j++) {
+                    qr.addQuestionItem(items.get(j));
+                }
+                result.add(qr);
+            }else{
+                result.add(new QuestionListResponse(q.get(i), QuestionType.SHORT_ANSWER.toString()));
+            }
+        }
+        return result;
+    }
+
+    @Data
+    static class QuestionListResponse {
+        private Long question_id;
+        private String question;
+        private String description;
+        private boolean essential;
+        private String imageName;
+        private List<String> items = new ArrayList<>();
+        private String type;
+
+        public QuestionListResponse(Question q, String type) {
+            this.question_id = q.getId();
+            this.question = q.getTitle();
+            this.description = q.getDescription();
+            this.essential = q.isEssential();
+            this.imageName = q.getImageName();
+            this.type = type;
+        }
+
+        public void addQuestionItem(String item) {
+            this.items.add(item);
+        }
+    }
+
+
+
+    public boolean supportsMultipleChoice(Question question) {
+        return (question instanceof MultipleChoice);
+    }
+
+
 }

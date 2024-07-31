@@ -18,11 +18,11 @@ import java.util.List;
 @Setter
 public class MultipleChoice extends Question{
    // private List<String> items;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
     private List<MultipleChoiceItem> items = new ArrayList<>();
 
-    public static MultipleChoice createMultipleChoice(QuestionType type, String title, String description, boolean isEssential, String imageName) {
+    public static MultipleChoice createMultipleChoice(String title, String description, boolean isEssential, String imageName) {
         MultipleChoice multipleChoice = new MultipleChoice();
 
         //multipleChoice.setType(type);

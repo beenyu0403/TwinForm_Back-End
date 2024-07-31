@@ -29,6 +29,16 @@ public class WriteFormRepository {
         return em.find(Form.class, id);
     }
 
+    public WriteForm findOneWriteForm(Long id) {
+        return em.find(WriteForm.class, id);
+    }
+
+    public Form findOneFormByWriteForm(WriteForm writeForm) {
+        return em.createQuery("select f from Form f where f.writeForm = :writeForm", Form.class)
+                .setParameter("writeForm", writeForm)
+                .getSingleResult();
+    }
+
 
     public Object findAllTitleWriteFormWithMember(Member member) {
 
