@@ -34,6 +34,11 @@ public class FindMemberWriteFormApiController {
         return new WriteFormListResponse(writeFormService.findAllTitleFormsByMemberId(member));
     }
 
+    @RequestMapping("")
+    public String test() {
+        return "test";
+    }
+
     @GetMapping("/write-form-detail")
     public WriteFormDetailResponse findWriteFormDetail(@RequestParam String writeformid) {
         WriteFormDetailResponse wfDetail = new WriteFormDetailResponse();

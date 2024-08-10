@@ -27,23 +27,45 @@ public class WriteQuestionService {
     }
 
     @Transactional
-    public Question createQuestion(Long form_id, String questionType, String question, String description, Boolean is_essential, String image_name, List<String> choice_items) {
+    public Question createQuestion(Long form_id, String questionType, String question, String description, Boolean is_essential, String image_name, List<String> choice_items, int question_order) {
         Form form = writeFormRepository.findOne(form_id);
         Question question1;
         if (questionType.equals("객관식")) {
 
-            question1 = MultipleChoice.createMultipleChoice(question, description, is_essential, image_name);
+            question1 = MultipleChoice.createMultipleChoice(question, description, is_essential, image_name, question_order);
             for (int i=0; i< choice_items.size(); i++) {
                 MultipleChoiceItem multipleChoiceItem = MultipleChoice.createMultipleChoiceItem((MultipleChoice) question1, choice_items.get(i));
                 writeQuestionRepository.saveQuestionItem(multipleChoiceItem);
             }
         }else{
-            question1 = ShortAnswer.createShortAnswer(QuestionType.SHORT_ANSWER, question, description, is_essential, image_name);
+            question1 = ShortAnswer.createShortAnswer(QuestionType.SHORT_ANSWER, question, description, is_essential, image_name, question_order);
         }
         question1.changeForm(form);
         writeQuestionRepository.save(question1);
         return question1;
     }
+    @Transactional
+    public Question updateQuestion(Long form_id, String questionType, String question, String description, Boolean is_essential, String image_name, List<String> choice_items, int question_order) {
+        Form form = writeFormRepository.findOne(form_id);
+
+
+
+
+        Question question1;
+        if (questionType.equals("객관식")) {
+            question1 = MultipleChoice.createMultipleChoice(question, description, is_essential, image_name, question_order);
+            for (int i=0; i< choice_items.size(); i++) {
+                MultipleChoiceItem multipleChoiceItem = MultipleChoice.createMultipleChoiceItem((MultipleChoice) question1, choice_items.get(i));
+                writeQuestionRepository.saveQuestionItem(multipleChoiceItem);
+            }
+        }else{
+            question1 = ShortAnswer.createShortAnswer(QuestionType.SHORT_ANSWER, question, description, is_essential, image_name, question_order);
+        }
+        question1.changeForm(form);
+        writeQuestionRepository.save(question1);
+        return question1;
+    }
+
 
 
     public List<Question> findQuestions() {
@@ -81,6 +103,7 @@ public class WriteQuestionService {
         private String imageName;
         private List<String> items = new ArrayList<>();
         private String type;
+        private int questionOrder;
 
         public QuestionListResponse(Question q, String type) {
             this.question_id = q.getId();
@@ -89,6 +112,7 @@ public class WriteQuestionService {
             this.essential = q.isEssential();
             this.imageName = q.getImageName();
             this.type = type;
+            this.questionOrder = q.getQuestionOrder();
         }
 
         public void addQuestionItem(String item) {

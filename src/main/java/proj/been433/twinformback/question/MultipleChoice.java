@@ -22,10 +22,12 @@ public class MultipleChoice extends Question{
     @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
     private List<MultipleChoiceItem> items = new ArrayList<>();
 
-    public static MultipleChoice createMultipleChoice(String title, String description, boolean isEssential, String imageName) {
+    public static MultipleChoice createMultipleChoice(String title, String description, boolean isEssential, String imageName, int questionOrder) {
         MultipleChoice multipleChoice = new MultipleChoice();
 
         //multipleChoice.setType(type);
+        multipleChoice.setQuestionOrder(questionOrder);
+        multipleChoice.setDelete(false);
         multipleChoice.setTitle(title);
         multipleChoice.setDescription(description);
         multipleChoice.setEssential(isEssential);

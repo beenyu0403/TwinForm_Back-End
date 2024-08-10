@@ -29,6 +29,7 @@ public class WriteFormRepository {
         return em.find(Form.class, id);
     }
 
+
     public WriteForm findOneWriteForm(Long id) {
         return em.find(WriteForm.class, id);
     }

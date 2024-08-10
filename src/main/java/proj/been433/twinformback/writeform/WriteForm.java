@@ -60,7 +60,8 @@ public class WriteForm {
         return writeForm;
     }
 
-    private static void changeFormStatus(Form form, WriteForm writeForm) {
+
+    public static void changeFormStatus(Form form, WriteForm writeForm) {
         LocalDate min = LocalDate.parse(form.getMinDate());
         LocalDate max = LocalDate.parse(form.getMaxDate());
         LocalDate current = LocalDate.now();

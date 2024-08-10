@@ -15,6 +15,7 @@ import proj.been433.twinformback.service.MemberService;
 import proj.been433.twinformback.service.WriteFormService;
 import proj.been433.twinformback.service.WriteQuestionService;
 import proj.been433.twinformback.writeform.Form;
+import proj.been433.twinformback.writeform.WriteForm;
 
 import java.util.List;
 
@@ -35,13 +36,33 @@ public class WriteFormApiController {
         Long form_id = writeFormService.writeForm(form);
         for (int i=0; i<request.questions.size(); i++) {
             CreateWriteFormRequestQuestion cw = request.questions.get(i);
-            Question question = writeQuestionService.createQuestion(form_id, cw.questionType, cw.question, cw.description, cw.is_essential, cw.image_name, cw.choice_items);
+            Question question = writeQuestionService.createQuestion(form_id, cw.questionType, cw.question, cw.description, cw.is_essential, cw.image_name, cw.choice_items, i+1);
         }
         Long writeId = writeFormService.write(member.getId(), form.getId());
 
         System.out.println(userid);
 
         return new CreateWriteFormResponse(writeId);
+    }
+
+    @PutMapping("/write-form")
+    public CreateWriteFormResponse wirteForm(@RequestHeader("userid") String userid, @RequestHeader("writeformid") String writeformid, @RequestBody @Validated CreateWriteFormRequest request) {
+
+        Member member = memberService.findOneByLoginId(userid);
+        WriteForm writeForm = writeFormService.findOneWriteForm(Long.parseLong(writeformid));
+        //Long formId = 0L;
+//        if (writeForm.getMember().getId() == member.getId()) {
+//            Long formId = writeFormService.update(writeForm.getId(), request.getTitle(), request.getMin_Date(), request.getMax_Date());
+//
+//            for (int i=0; i<request.questions.size(); i++) {
+//                CreateWriteFormRequestQuestion cw = request.questions.get(i);
+//                Question question = writeQuestionService.updateQuestion(formId, cw.questionType, cw.question, cw.description, cw.is_essential, cw.image_name, cw.choice_items, i+1);
+//            }
+//        }
+
+        System.out.println("PUT 요청 - writeForm");
+
+        return new CreateWriteFormResponse(1L);
     }
 
     /**

@@ -30,6 +30,11 @@ public abstract class Question {
     private boolean isEssential; // 답변 필수 여부
     private String imageName; // 첨부 이미지
 
+    @JsonIgnore
+    private boolean isDelete;
+
+    private int questionOrder;
+
     public void changeForm(Form form) {
         this.form = form;
         form.getQuestions().add(this);

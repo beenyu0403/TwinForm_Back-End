@@ -13,9 +13,11 @@ import java.util.List;
 @Getter
 @Setter
 public class ShortAnswer extends Question {
-    public static ShortAnswer createShortAnswer(QuestionType type, String title, String description, boolean isEssential, String imageName) {
+    public static ShortAnswer createShortAnswer(QuestionType type, String title, String description, boolean isEssential, String imageName, int questionOrder) {
         ShortAnswer shortAnswer = new ShortAnswer();
         //shortAnswer.setType(type);
+        shortAnswer.setQuestionOrder(questionOrder);
+        shortAnswer.setDelete(false);
         shortAnswer.setTitle(title);
         shortAnswer.setDescription(description);
         shortAnswer.setEssential(isEssential);
@@ -23,5 +25,4 @@ public class ShortAnswer extends Question {
 
         return shortAnswer;
     }
-
 }

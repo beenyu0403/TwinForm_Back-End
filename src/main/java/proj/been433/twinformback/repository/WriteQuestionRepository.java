@@ -33,7 +33,7 @@ public class WriteQuestionRepository {
     }
 
     public List<Question> findQuestionsByForm(Form form) {
-        return em.createQuery("select q from Question q where q.form = :form", Question.class)
+        return em.createQuery("select q from Question q where q.form = :form and q.isDelete = false", Question.class)
                 .setParameter("form", form)
                 .getResultList();
     }
