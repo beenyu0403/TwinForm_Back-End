@@ -1,23 +1,18 @@
 package proj.been433.twinformback.api;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import proj.been433.twinformback.api.dto.FormTitleResponse;
 import proj.been433.twinformback.member.Member;
-import proj.been433.twinformback.question.Question;
 import proj.been433.twinformback.service.MemberService;
 import proj.been433.twinformback.service.WriteFormService;
 import proj.been433.twinformback.service.WriteQuestionService;
 import proj.been433.twinformback.writeform.Form;
-import proj.been433.twinformback.writeform.FormStatus;
-import proj.been433.twinformback.writeform.WriteForm;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -50,9 +45,9 @@ public class FindMemberWriteFormApiController {
 
     @Data
     static class WriteFormListResponse {
-        private Object writeFormAllTitleList;
+        private List<FormTitleResponse> writeFormAllTitleList;
 
-        public WriteFormListResponse(Object writeFormAllTitleList) {
+        public WriteFormListResponse(List<FormTitleResponse> writeFormAllTitleList) {
             this.writeFormAllTitleList = writeFormAllTitleList;
         }
     }

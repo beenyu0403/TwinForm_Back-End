@@ -46,19 +46,33 @@ public class WriteFormApiController {
     }
 
     @PutMapping("/write-form")
-    public CreateWriteFormResponse wirteForm(@RequestHeader("userid") String userid, @RequestHeader("writeformid") String writeformid, @RequestBody @Validated CreateWriteFormRequest request) {
+    public CreateWriteFormResponse wirteForm(@RequestHeader("userid") String userid, @RequestHeader("writeformid") String writeformid, @RequestBody @Validated EditWriteFormRequest request) {
+        ObjectMapper objectMapper = new ObjectMapper();
+             try {
+                  String test = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(request);
+                  System.out.println(test);
+              } catch (JsonProcessingException e) {
+                  throw new RuntimeException(e);
+              }
 
         Member member = memberService.findOneByLoginId(userid);
         WriteForm writeForm = writeFormService.findOneWriteForm(Long.parseLong(writeformid));
         //Long formId = 0L;
-//        if (writeForm.getMember().getId() == member.getId()) {
-//            Long formId = writeFormService.update(writeForm.getId(), request.getTitle(), request.getMin_Date(), request.getMax_Date());
-//
+        if (writeForm.getMember().getId() == member.getId()) {
+            Long formId = writeFormService.update(writeForm.getId(), request.getTitle(), request.getMin_Date(), request.getMax_Date());
+            int count = writeQuestionService.countQuestions(formId);
+            if (request.questions.size() != count) {
+                for (int i = count; i<request.questions.size(); i++) {
+                    EditWriteFormRequestQuestion cw = request.questions.get(i);
+                    Question question = writeQuestionService.createQuestion(formId, cw.questionType, cw.question, cw.description, cw.is_essential, cw.image_name, cw.choice_items, i+1);
+                }
+            }
+
 //            for (int i=0; i<request.questions.size(); i++) {
-//                CreateWriteFormRequestQuestion cw = request.questions.get(i);
-//                Question question = writeQuestionService.updateQuestion(formId, cw.questionType, cw.question, cw.description, cw.is_essential, cw.image_name, cw.choice_items, i+1);
+//                EditWriteFormRequestQuestion cw = request.questions.get(i);
+//                writeQuestionService.updateQuestion(formId, cw.questionType, cw.question, cw.description, cw.is_essential, cw.image_name, cw.choice_items, cw.question_id, i+1);
 //            }
-//        }
+        }
 
         System.out.println("PUT 요청 - writeForm");
 
@@ -101,7 +115,24 @@ public class WriteFormApiController {
         private String image_name;
         private List<String> choice_items;
     }
+    @Data
+    static class EditWriteFormRequest {
+        private String title;
+        private String min_Date;
+        private String max_Date;
+        private List<EditWriteFormRequestQuestion> questions;
+    }
 
+    @Data
+    static class EditWriteFormRequestQuestion {
+        private String questionType;
+        private String question;
+        private String description;
+        private Boolean is_essential;
+        private String image_name;
+        private List<String> choice_items;
+        private int question_id;
+    }
     @Data
     static class CreateWriteFormResponse {
         private Long id;

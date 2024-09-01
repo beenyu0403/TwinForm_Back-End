@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import proj.been433.twinformback.answer.Participation;
 import proj.been433.twinformback.question.Question;
 
 import java.util.ArrayList;
@@ -23,6 +24,10 @@ public class Form {
     @OneToMany(mappedBy = "form", fetch = FetchType.LAZY)
     //@JoinColumn(name = "question_id")
     private List<Question> questions = new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "form", fetch = FetchType.LAZY)
+    private List<Participation> participations = new ArrayList<>();
 
     @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)

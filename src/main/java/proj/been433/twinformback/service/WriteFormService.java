@@ -3,11 +3,10 @@ package proj.been433.twinformback.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import proj.been433.twinformback.api.dto.FormTitleResponse;
 import proj.been433.twinformback.member.Member;
-import proj.been433.twinformback.question.Question;
 import proj.been433.twinformback.repository.MemberRepository;
 import proj.been433.twinformback.repository.WriteFormRepository;
-import proj.been433.twinformback.repository.WriteQuestionRepository;
 import proj.been433.twinformback.writeform.Form;
 import proj.been433.twinformback.writeform.WriteForm;
 
@@ -51,7 +50,8 @@ public class WriteFormService {
         return writeForm.getId();
     }
 
-    public Object findAllTitleFormsByMemberId(Member member) {
+    public List<FormTitleResponse> findAllTitleFormsByMemberId(Member member) {
+
         return writeFormRepository.findAllTitleWriteFormWithMember(member);
     }
 

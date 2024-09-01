@@ -44,29 +44,32 @@ public class WriteQuestionService {
         writeQuestionRepository.save(question1);
         return question1;
     }
-    @Transactional
-    public Question updateQuestion(Long form_id, String questionType, String question, String description, Boolean is_essential, String image_name, List<String> choice_items, int question_order) {
-        Form form = writeFormRepository.findOne(form_id);
+//    @Transactional
+//    public void updateQuestion(Long form_id, String questionType, String question, String description, Boolean is_essential, String image_name, List<String> choice_items, int question_id, int question_order) {
+//        Form form = writeFormRepository.findOne(form_id);
+//        List<Question> questions = writeQuestionRepository.findQuestionsByForm(form);
+//
+//        Question question1;
+//
+////        if (questionType.equals("객관식")) {
+////            //question1 = MultipleChoice.createMultipleChoice(question, description, is_essential, image_name, question_order);
+////            for (int i=0; i< choice_items.size(); i++) {
+////                MultipleChoiceItem multipleChoiceItem = MultipleChoice.createMultipleChoiceItem((MultipleChoice) question1, choice_items.get(i));
+////                writeQuestionRepository.saveQuestionItem(multipleChoiceItem);
+////            }
+////        }else{
+////            question1 = ShortAnswer.createShortAnswer(QuestionType.SHORT_ANSWER, question, description, is_essential, image_name, question_order);
+//////        }
+//        //question1.changeForm(form);
+//        //writeQuestionRepository.save(question1);
+//        //return question1;
+//    }
 
-
-
-
-        Question question1;
-        if (questionType.equals("객관식")) {
-            question1 = MultipleChoice.createMultipleChoice(question, description, is_essential, image_name, question_order);
-            for (int i=0; i< choice_items.size(); i++) {
-                MultipleChoiceItem multipleChoiceItem = MultipleChoice.createMultipleChoiceItem((MultipleChoice) question1, choice_items.get(i));
-                writeQuestionRepository.saveQuestionItem(multipleChoiceItem);
-            }
-        }else{
-            question1 = ShortAnswer.createShortAnswer(QuestionType.SHORT_ANSWER, question, description, is_essential, image_name, question_order);
-        }
-        question1.changeForm(form);
-        writeQuestionRepository.save(question1);
-        return question1;
+    public int countQuestions(Long formId) {
+        Form form = writeFormRepository.findOne(formId);
+        int count = writeQuestionRepository.findQuestionsByForm(form).size();
+        return count;
     }
-
-
 
     public List<Question> findQuestions() {
         return writeQuestionRepository.findAll();

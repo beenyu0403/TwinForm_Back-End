@@ -3,6 +3,7 @@ package proj.been433.twinformback.member;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import proj.been433.twinformback.answer.Participation;
 import proj.been433.twinformback.writeform.WriteForm;
 
 import java.util.ArrayList;
@@ -25,4 +26,7 @@ public class Member {
 
     @OneToMany(mappedBy = "member")
     private List<WriteForm> writeForms = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member")
+    private List<Participation> participations = new ArrayList<>();
 }

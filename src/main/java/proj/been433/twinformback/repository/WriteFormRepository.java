@@ -5,10 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import proj.been433.twinformback.api.dto.FormTitleResponse;
 import proj.been433.twinformback.member.Member;
-import proj.been433.twinformback.question.Question;
 import proj.been433.twinformback.writeform.Form;
-import proj.been433.twinformback.writeform.FormStatus;
 import proj.been433.twinformback.writeform.WriteForm;
 
 import java.util.List;
@@ -41,19 +40,19 @@ public class WriteFormRepository {
     }
 
 
-    public Object findAllTitleWriteFormWithMember(Member member) {
+    public List<FormTitleResponse> findAllTitleWriteFormWithMember(Member member) {
 
-        return em.createQuery("select w.id, w.title, f.status from Form w join WriteForm f on w.writeForm = f where f.member = :member", AllIdAndTitleForm.class)
+        return em.createQuery("select w.id, w.title, f.status from Form w join WriteForm f on w.writeForm = f where f.member = :member", FormTitleResponse.class)
                 .setParameter("member", member)
                 .getResultList();
     }
-    @Data
-    @AllArgsConstructor
-    static class AllIdAndTitleForm {
-        private Long id;
-        private String title;
-        private FormStatus status;
-    }
+//    @Data
+//    @AllArgsConstructor
+//    static class AllIdAndTitleForm {
+//        private Long id;
+//        private String title;
+//        private FormStatus status;
+//    }
     public Object findOneByForm(Form form) {
         return em.createQuery("select f.id, f.title, f.minDate, f.maxDate from Form f where f.id = :id", OneWriteForm.class)
                 .setParameter("id", form.getId())
