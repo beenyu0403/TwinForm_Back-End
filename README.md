@@ -9,7 +9,7 @@
 "앱을 통해 간단하게 필요한 폼을 제작하고, 참여한 폼을 한눈에 확인할 수 있는 서비스" 개발
 
 ## 집중 개발 분야
-백엔드(Back-End) - Spring Boot 프레임워크, Java, H2 Database
+백엔드(Back-End) - Spring Boot 프레임워크, Java, MySQL Database
 
 ## 제공 서비스 (API)
 - 회원 가입 / 로그인
